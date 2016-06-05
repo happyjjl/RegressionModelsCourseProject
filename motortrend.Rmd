@@ -17,3 +17,17 @@ We are particularly interested in the following two questions:
 
 * Is an automatic or manual transmission better for MPG.
 * Quantify the MPG difference between automatic and manual transmissions.
+
+##Data Pre-Processing
+
+In this section we load the data set and perform the necessary data transformations that are needed for a better analysis. Specifically for this data set we will transform the necessary variables into factors.
+
+```{r echo=TRUE}
+data(mtcars)
+mtcars$cyl <- factor(mtcars$cyl)
+mtcars$vs <- factor(mtcars$vs)
+mtcars$gear <- factor(mtcars$gear)
+mtcars$carb <- factor(mtcars$carb)
+mtcars$am <- factor(mtcars$am,labels=c('Automatic','Manual'))
+str(mtcars)
+```
