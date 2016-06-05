@@ -29,5 +29,28 @@ mtcars$vs <- factor(mtcars$vs)
 mtcars$gear <- factor(mtcars$gear)
 mtcars$carb <- factor(mtcars$carb)
 mtcars$am <- factor(mtcars$am,labels=c('Automatic','Manual'))
-str(mtcars)
+```
+
+##Exploratory Data Analysis
+
+In this section we explore some relationships between variables of the data set and our outcome. First we plot the relationship between all variables of the data set (see Figure 1 in the appendix). From this plot we can see a strong correlation between variables such as: **disp**, **hp**, **drat**, **wt**, and **am** with our outcome **mpg**.
+
+Since we are actually interested in quantifying the MPG difference between automatic and manual transmissions we also plot a boxplot between **mpg** and **am** (see Figure 2 in the appendix). We can see that there is an increase in **mpg** when the transmission is **manual**.
+
+##Appendix
+
+```{r echo=FALSE,fig.height=5, fig.width=7,fig.cap="Pairs plot for mtcars"}
+pairs(mtcars, panel=function(x,y){
+	points(x,y)
+	abline(lm(y~x), col='red')
+}, main="Pairs plot for mtcars")
+```
+
+
+```{r echo=FALSE,fig.cap="Boxplot between mpg and am", fig.height=3, fig.width=5}
+library(ggplot2)
+g <- ggplot(mtcars, aes(am, mpg))
+g <- g + geom_boxplot(aes(fill=am))
+g <- g + xlab("Transmission Type") + ylab("MPG") + ggtitle("MPG x Transmission Type")
+g
 ```
