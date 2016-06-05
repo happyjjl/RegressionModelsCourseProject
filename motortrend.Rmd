@@ -1,0 +1,19 @@
+---
+title: "Motor Trend - Effects of transmission on MPG"
+author: "Pedro Magalhães Bernardo"
+date: "June 5, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Executive Summary
+
+This report is part of a course project within the **[Regression Models](https://www.coursera.org/learn/regression-models)** course on the **[Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science)** by **[Johns Hopkins University](https://www.coursera.org/jhu])** on **[Coursera](https://www.coursera.org/)**. On this report we will analyze the **mtcars** data set and explore the relationship between the type of transmission (manual or automatic), among other variables, and miles per gallon (MPG), which will be our outcome.
+
+We are particularly interested in the following two questions:
+
+* Is an automatic or manual transmission better for MPG.
+* Quantify the MPG difference between automatic and manual transmissions.
