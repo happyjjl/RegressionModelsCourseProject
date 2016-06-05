@@ -61,7 +61,18 @@ anova(base_model, best_model)
 
 Since the **p-value** is highly significant we reject the null hypothesis that the variables **cyl**, **hp** and **wt** do not contribute to the model.
 
+##Diagnostics
 
+Finally we study the residual plots of the regression model and do some diagnostics. From the residual plot (see Figure 3 in the appendix) we can see that the **Residuals x Fitted** plot seems randomly scattered, what verifies the independence condition. The **Normal Q-Q** plot indicates that the residuals are normally distributed, the **Scale-Location** plot indicates constant variance. We can also notice some outliers or leverage points from the plots, let's take a look in the hatvalues and dfbetas to see if they are the same as the ones showing in the plots.
+
+```{r echo=TRUE}
+hat_values <- hatvalues(best_model)
+df_betas <- dfbetas(best_model)
+tail(sort(hat_values),3)
+tail(sort(df_betas[,6]), 3)
+``` 
+
+We can see from the analysis above that the cars showing in the residual plots are the same as the ones found in our diagnosis.
 
 ##Appendix
 
