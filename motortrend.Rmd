@@ -37,6 +37,32 @@ In this section we explore some relationships between variables of the data set 
 
 Since we are actually interested in quantifying the MPG difference between automatic and manual transmissions we also plot a boxplot between **mpg** and **am** (see Figure 2 in the appendix). We can see that there is an increase in **mpg** when the transmission is **manual**.
 
+##Regression
+
+In this section we build a linear regression using different variables as predictors and **mpg** as outcome. To find the best model we perform a stepwise selection using both forward selection and backward elimination. The code below takes care of this.
+
+```{r echo=TRUE,  results="hide"}
+first_model <- lm(mpg ~., mtcars)
+best_model <- step(first_model, direction = "both")
+```
+
+We can see that the best model uses the variables **cyl**, **hp** and **wt** as confounders and **am** as the independent variable.
+
+```{r echo=TRUE}
+best_model
+```
+
+We can also use **anova** to compare a base model, that only uses **am** as a predictor, and the best model that was found performing stepwise selection.
+
+```{r echo=TRUE}
+base_model <- lm(mpg~am, mtcars)
+anova(base_model, best_model)
+```
+
+Since the **p-value** is highly significant we reject the null hypothesis that the variables **cyl**, **hp** and **wt** do not contribute to the model.
+
+
+
 ##Appendix
 
 ```{r echo=FALSE,fig.height=5, fig.width=7,fig.cap="Pairs plot for mtcars"}
